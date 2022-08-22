@@ -1,28 +1,24 @@
 const fs = require('fs')
 
-function getFirstPalindromicPrime(){
+function readFileDigits(){
 
     fs.readFile('./piOneMilionOfDigits.txt', 'utf-8', (err, data) => {
         if(err){
             console.log(err)
             return
         }
-        getNumWithNineAlg(data)
+        getFirstPalindromicPrimeWithNineAlg(data)
     })
-    
 }   
 
-function getNumWithNineAlg(number){
+function getFirstPalindromicPrimeWithNineAlg(number){
     for(let i = 0; i < number.length; i++){
         const numWithNineAlg = number.slice(i, i + 9)
         if(isPalindromic(numWithNineAlg) && !numWithNineAlg.startsWith(0) && isPrime(numWithNineAlg)) {
             console.log(numWithNineAlg)
             return
         }
-            
-        
     }
-
 }
 
 
@@ -52,4 +48,5 @@ function isPrime(number){
     return false
 }
 
-getFirstPalindromicPrime()
+
+readFileDigits()
